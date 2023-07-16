@@ -7,13 +7,13 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 marp: true
 ---
 
-# 
+# 그래프 자동 그리기
 
-#### **부제목**
+#### ***그래프 시각화 프로그램***
 
 </br>
 
-##### 이름 | 학교 | 학년
+##### 이름:이유찬 | 학교:경인고등학교 | 2학년
 
 ---
 
@@ -23,7 +23,7 @@ marp: true
 
   </br>
 
-###### 00개월
+###### 1개월
 
 </br>
 
@@ -31,7 +31,7 @@ marp: true
 
   </br>
 
-###### `Computer Science`, `Math`, `physics`
+###### `Computer Science`, `Math`, `시각화`
 
 ---
 
@@ -39,15 +39,9 @@ marp: true
 
 ### | 탐구 동기
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-
----
-
-# 📝 프로젝트 내용
-
-### | 주제
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+학교에서 이번학기에 지수함수, 로그함수 등 다양한 형태의 식에 대한 함수에 대해 학습했다. 학습 과정에서 배운 함수의 형태를 그려보는 것에 어려움이 있었는데 이것을 그동안 배운 정보 지식을 활용해서 그래프를 그려보면 학습에 도움이 될 것 같아서 프로젝트를 시작하게 되었다.
+<br/>
+이에 파이썬를 사용해서 그래프 시각화 프로그램을 제작하고자 한다
 
 ---
 
@@ -55,7 +49,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem 
 
 ### | 교과 연관성
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+수학의 일차함수,이차함수,지수함수,로그함수 등 여러 함수들의 형태를 알 수 있고 이를 통해 수학의 여러 함수들을 더욱 익숙하고 쉽게 받아들일 수 있다.
+<br/>
 
 ---
 
@@ -63,30 +58,74 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem 
 
 ### | 활동 내용
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-
----
-
-# 📝 프로젝트 내용
-
-### | 생기부 기재 추천 문구
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+프로그래밍 언어인 파이썬을 사용하여 그래프 시각화 프로그램을 제작함
 
 ---
 
 ## 💡 code
 
-- #### import modules
+- #### 도움말 및 제작자
 
 ```python
-import pandas as pd
+print("----------그래프 자동 그리기----------")
+
+some = input("도움말\n1)사용법\n2)제작자:")
+if some == "1)" or "1":
+  print("이차함수 및 일차함수: ex)x^2+2*x-3 \n 지수함수: ex)x^2 + exp(x) \n 로그함수: x^2 + log(x)")
+elif some == "2)" or "2" :
+  print("이유찬")
+``` 
+
+---
+
+## 💡 code
+
+- #### 그래프 시각화 프로그램
+
+```python
+#%%
+reqast = input("그리실 함수 식을 입력하세요: ")
+reqast = reqast.replace("^","**")
+
+from sympy import *
+import sympy as sy
 import numpy as np
-import matplotlib as plt
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-import math
 ```
+
+---
+
+## 💡 code
+
+```py
+x = sy.symbols('x')
+fx = parse_expr(reqast)
+plot(fx)
+x_vals = np.linspace(-100, 100, 1000)
+y_vals = [fx.subs(x, val) for val in x_vals]
+```
+
+---
+
+## 💡 code
+
+- #### 그래프 시각화 및 x값,y값 제한 프로그램
+
+```python
+# %%
+plt.plot(x_vals, y_vals)
+plt.xlim(-100, 100)
+plt.ylim(-100, 100)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Graph of f(x)')
+plt.grid(True)
+plt.show()
+#%%
+
+```
+
+
 
 ---
 
@@ -95,13 +134,38 @@ import math
 - #### read data
 
 ```python
-df = pd.read_csv('./data.csv', encoding = 'cp949')
-df = df[df['자치구명']=='강남구']
-mydf = df[['접수연도', '물건금액(만원)', '건물면적(㎡)']]
+x+2
 ```
 
----
 
 ## ✅ result
 
-![](./img.png)
+![h:200px](./src/Figure_1.png)
+
+---
+## 💡 code
+
+- #### read data
+
+```python
+x^2 - 2 * x + 3
+```
+
+
+## ✅ result
+
+![h:200px](./src/Figure_2.png)
+
+---
+## 💡 code
+
+- #### read data
+
+```python
+x^2 + 3 + log(x)
+```
+
+
+## ✅ result
+
+![h:200px](./src/Figure_3.png)
